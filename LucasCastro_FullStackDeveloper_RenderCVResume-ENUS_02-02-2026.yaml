@@ -1,0 +1,204 @@
+cv:
+  name: Lucas Castro
+  location: Manaus, AM, Brazil
+  email: lucascastro.a99@gmail.com
+  phone: +55-92-98163-8283
+  website: https://lucascastroa99.vercel.app
+  social_networks:
+    - network: LinkedIn
+      username: lucascastroa99
+    - network: GitHub
+      username: lucascastroa99
+  sections:
+    summary:
+      - Full Stack Developer with **4+ years of experience** building robust web applications using **React, Vue, and Angular**. Proficient in **Node.js, Python, and .NET**. Hands-on experience in **end-to-end project** execution, including requirements gathering, performance testing, CI/CD pipelines, proof of concept, and UX/UI optimization. Delivers high-impact solutions focused on **performance and client value**.
+    experience:
+      - company: "*Marttech - Desenvolvimento de Software*"
+        position: Front-end Developer (Mid-Level)
+        start_date: 2024-07
+        end_date: 2025-08
+        location: Toledo, PR, Brazil (Remote)
+        highlights:
+          - Gathered technical requirements from clients and documented system impacts.
+          - Implemented user interfaces in **React.js** following usability guidelines.
+          - Optimized **MapBox** polygon and layer implementations, reducing load time by **80%** and memory usage from **6GB to 2GB**.
+          - Refactored parts of the application architecture, addressing performance and usability issues.
+      - company: "*Ibrowse Consultoria e Informática*"
+        position: Development Analyst (Mid-Level)
+        start_date: 2023-08
+        end_date: 2024-01
+        location: Porto Alegre, RS, Brazil (Remote)
+        highlights:
+          - Developed and fixed features in **Angular** applications. 
+          - Defined architecture and design patterns for the application and new modules. 
+          - Configured **CI/CD** pipelines and managed **GitLab** repositories. 
+          - Created unit tests using Karma with **77%** overall code coverage. 
+    education:
+      - institution: Federal Institute of Amazonas
+        area: Software Engineering
+        start_date: 2019-02
+        end_date: 2023-02
+        location: Manaus, AM, Brazil (On-site)
+    certifications:
+      - institution: Coodesh
+        area: React.js
+        date: 78.3% of Accuracy
+        location: 2023-05
+    skills:
+      - label: Programming Languages
+        details: JavaScript, Python, C#
+      - label: Libraries & Frameworks
+        details: React.js, Angular, Vue.js, Next.js, Nuxt.js, TypeScript, jQuery, Styled Components, Tailwind CSS, Bootstrap, Express, Prisma, Socket.io, Nest.js, Django, Flask, Entity Framework, AutoMapper, Moq, xUnit
+      - label: Databases
+        details: PostgreSQL, MySQL, Microsoft SQL Server, MongoDB
+      - label: Development Tools
+        details: Figma, Canva, Postman, DevTools
+      - label: Testing & Automation
+        details: Jest, Selenium, Scrapy
+      - label: Infrastructure & DevOps
+        details: GitHub Actions, Azure DevOps, Docker, Ansible, NGINX, RabbitMQ
+      - label: Soft Skills
+        details: Analytical, Self-taught, Collaborative, Proactive, Organized, Flexible
+    languages:
+      - label: Portuguese
+        details: 'Native or Fluent **(C2)**'
+      - label: English
+        details: 'Basic or Elementary **(A2)**'
+design:
+  theme: classic
+  page:
+    size: a4
+    top_margin: 1.27cm
+    bottom_margin: 1.27cm
+    left_margin: 1.27cm
+    right_margin: 1.27cm
+    show_page_numbering: false
+    show_last_updated_date: false
+  colors:
+    text: rgb(0, 0, 0)
+    name: rgb(30, 185, 85)
+    connections: rgb(0, 0, 0)
+    section_titles: rgb(30, 185, 85)
+    links: rgb(0, 0, 255)
+    last_updated_date_and_page_numbering: rgb(128, 128, 128)
+  text:
+    font_family: Source Sans 3
+    font_size: 11pt
+    leading: 0.6em
+    alignment: justified
+    date_and_location_column_alignment: right
+  links:
+    underline: false
+    use_external_link_icon: true
+  header:
+    name_font_family: Source Sans 3
+    name_font_size: 30pt
+    name_bold: true
+    photo_width: 3.5cm
+    vertical_space_between_name_and_connections: 0.7cm
+    vertical_space_between_connections_and_first_section: 0.7cm
+    horizontal_space_between_connections: 0.5cm
+    connections_font_family: Source Sans 3
+    separator_between_connections: ''
+    use_icons_for_connections: true
+    alignment: center
+  section_titles:
+    type: with-partial-line
+    font_family: Source Sans 3
+    font_size: 1.5em
+    bold: true
+    small_caps: false
+    line_thickness: 0.5pt
+    vertical_space_above: 0.6cm
+    vertical_space_below: 0.3cm
+  entries:
+    date_and_location_width: 6cm
+    left_and_right_margin: 0.2cm
+    horizontal_space_between_columns: 0.1cm
+    vertical_space_between_entries: 1em
+    allow_page_break_in_sections: true
+    allow_page_break_in_entries: true
+    short_second_row: false
+    show_time_spans_in: []
+  highlights:
+    bullet: —
+    top_margin: 0.25cm
+    left_margin: 0.5cm
+    vertical_space_between_highlights: 0.25cm
+    horizontal_space_between_bullet_and_highlight: 0.5em
+    summary_left_margin: 0cm
+  entry_types:
+    one_line_entry:
+      template: '**LABEL:** DETAILS'
+    education_entry:
+      main_column_first_row_template: |-
+        **AREA**
+        INSTITUTION
+      degree_column_template: '**DEGREE**'
+      degree_column_width: 0cm
+      main_column_second_row_template: |-
+        SUMMARY
+        HIGHLIGHTS
+      date_and_location_column_template: |-
+        DATE
+        LOCATION
+    normal_entry:
+      main_column_first_row_template: '**NAME**'
+      main_column_second_row_template: |-
+        SUMMARY
+        HIGHLIGHTS
+      date_and_location_column_template: |-
+        DATE
+        LOCATION
+    experience_entry:
+      main_column_first_row_template: |-
+        **POSITION**
+        COMPANY
+      main_column_second_row_template: |-
+        SUMMARY
+        HIGHLIGHTS
+      date_and_location_column_template: |-
+        DATE
+        LOCATION
+locale:
+  language: en
+  phone_number_format: international
+  page_numbering_template: NAME - Page PAGE_NUMBER of TOTAL_PAGES
+  last_updated_date_template: Last updated on TODAY
+  date_template: FULL_MONTH_NAME YEAR
+  month: month
+  months: months
+  year: year
+  years: years
+  present: present
+  to: –
+  abbreviations_for_months:
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+  full_names_of_months:
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+rendercv_settings:
+  date: '2025-08-31'
+  render_command:
+  bold_keywords: []
