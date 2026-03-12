@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/RenderCV-Compatible-1EB955?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xNCAySDZhMiAyIDAgMCAwLTIgMnYxNmEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWOEwxNCAyem0tMiAxNkg4di0yaDR2MnptNC00SDh2LTZoOHY2em0tMi02VjRsNiA2aC02eiIvPjwvc3ZnPg==&logoColor=white" alt="RenderCV">
   <img src="https://img.shields.io/badge/Languages-2-blue?style=for-the-badge" alt="2 Languages">
   <img src="https://img.shields.io/badge/Formats-PDF%20%7C%20Markdown%20%7C%20YAML-orange?style=for-the-badge" alt="Formats">
-  <img src="https://img.shields.io/badge/Last%20Updated-February%202026-22c55e?style=for-the-badge" alt="Last Updated">
+  <img src="https://img.shields.io/badge/Last%20Updated-March%202026-22c55e?style=for-the-badge" alt="Last Updated">
 </p>
 
 <p align="center">
@@ -42,11 +42,13 @@ This repository contains my professional curriculum vitae (CV) / resume in multi
 curriculum-vitae/
 ├── 📄 LucasCastro_FullStackDeveloper_Resume-ENUS_02-02-2026.pdf
 ├── 📄 LucasCastro_FullStackDeveloper_LinkedInResume-ENUS_02-02-2026.pdf
-├── 📝 LucasCastro_FullStackDeveloper_MarkdownResume-ENUS_02-02-2026.md
+├── 📝 LucasCastro_FullStackDeveloper_MarkdownResume-ENUS_03-12-2026.md
+├── 📝 LucasCastro_FullStackDeveloper_FullMarkdownResume-ENUS_03-12-2026.md
 ├── ⚙️ LucasCastro_FullStackDeveloper_RenderCVResume-ENUS_02-02-2026.yaml
 ├── 📄 LucasCastro_DesenvolvedorFullStack_Curriculo-PTBR_02-02-2026.pdf
 ├── 📄 LucasCastro_DesenvolvedorFullStack_CurriculoLinkedIn-PTBR_02-02-2026.pdf
-├── 📝 LucasCastro_DesenvolvedorFullStack_CurriculoMarkdown-PTBR_02-02-2026.md
+├── 📝 LucasCastro_DesenvolvedorFullStack_CurriculoMarkdown-PTBR_12-03-2026.md
+├── 📝 LucasCastro_DesenvolvedorFullStack_CurriculoMarkdownCompleto-PTBR_12-03-2026.md
 ├── ⚙️ LucasCastro_DesenvolvedorFullStack_CurriculoRenderCV-PTBR_02-02-2026.yaml
 └── 📖 README.md
 ```
@@ -59,8 +61,10 @@ curriculum-vitae/
 | `FullStackDeveloper/DesenvolvedorFullStack` | Job title (EN/PT) |
 | `Resume/Curriculo` | Document type (EN/PT) |
 | `LinkedInResume/CurriculoLinkedIn` | Optimized for LinkedIn upload |
+| `MarkdownResume/CurriculoMarkdown` | Markdown format version |
+| `FullMarkdownResume/CurriculoMarkdownCompleto` | Extended markdown version with full details |
 | `ENUS/PTBR` | Language and locale |
-| `02-02-2026` | Last updated date (MM-DD-YYYY/DD-MM-YYYY) |
+| `02-02-2026/12-03-2026` | Last updated date (MM-DD-YYYY/DD-MM-YYYY) |
 | `.pdf/.md/.yaml` | File format |
 
 ---
@@ -73,7 +77,8 @@ curriculum-vitae/
 |--------|------|-------------|
 | PDF | [`Resume-ENUS.pdf`](./LucasCastro_FullStackDeveloper_Resume-ENUS_02-02-2026.pdf) | Standard professional CV |
 | PDF | [`LinkedInResume-ENUS.pdf`](./LucasCastro_FullStackDeveloper_LinkedInResume-ENUS_02-02-2026.pdf) | LinkedIn-optimized version |
-| Markdown | [`MarkdownResume-ENUS.md`](./LucasCastro_FullStackDeveloper_MarkdownResume-ENUS_02-02-2026.md) | Human-readable text version |
+| Markdown | [`MarkdownResume-ENUS.md`](./LucasCastro_FullStackDeveloper_MarkdownResume-ENUS_03-12-2026.md) | Human-readable text version |
+| Markdown | [`FullMarkdownResume-ENUS.md`](./LucasCastro_FullStackDeveloper_FullMarkdownResume-ENUS_03-12-2026.md) | Complete version with all details |
 | YAML | [`RenderCVResume-ENUS.yaml`](./LucasCastro_FullStackDeveloper_RenderCVResume-ENUS_02-02-2026.yaml) | RenderCV source file |
 
 ### Portuguese Versions 🇧🇷
@@ -82,7 +87,8 @@ curriculum-vitae/
 |--------|------|-------------|
 | PDF | [`Curriculo-PTBR.pdf`](./LucasCastro_DesenvolvedorFullStack_Curriculo-PTBR_02-02-2026.pdf) | Currículo profissional padrão |
 | PDF | [`CurriculoLinkedIn-PTBR.pdf`](./LucasCastro_DesenvolvedorFullStack_CurriculoLinkedIn-PTBR_02-02-2026.pdf) | Versão otimizada para LinkedIn |
-| Markdown | [`CurriculoMarkdown-PTBR.md`](./LucasCastro_DesenvolvedorFullStack_CurriculoMarkdown-PTBR_02-02-2026.md) | Versão em texto legível |
+| Markdown | [`CurriculoMarkdown-PTBR.md`](./LucasCastro_DesenvolvedorFullStack_CurriculoMarkdown-PTBR_12-03-2026.md) | Versão em texto legível |
+| Markdown | [`CurriculoMarkdownCompleto-PTBR.md`](./LucasCastro_DesenvolvedorFullStack_CurriculoMarkdownCompleto-PTBR_12-03-2026.md) | Versão completa com todos os detalhes |
 | YAML | [`CurriculoRenderCV-PTBR.yaml`](./LucasCastro_DesenvolvedorFullStack_CurriculoRenderCV-PTBR_02-02-2026.yaml) | Arquivo fonte RenderCV |
 
 ## 🛠️ About RenderCV
@@ -160,6 +166,19 @@ jobs:
 ```
 
 ## 📋 File Formats Explained
+
+### Current Status
+
+| Format | Latest Version | Status |
+|--------|----------------|--------|
+| Markdown (EN) | 03-12-2026 | ✅ Up to date |
+| Markdown (PT) | 12-03-2026 | ✅ Up to date |
+| YAML (EN) | 02-02-2026 | ⚠️ Needs regeneration |
+| YAML (PT) | 02-02-2026 | ⚠️ Needs regeneration |
+| PDF (EN) | 02-02-2026 | ⚠️ Needs regeneration |
+| PDF (PT) | 02-02-2026 | ⚠️ Needs regeneration |
+
+> **Note:** Markdown files contain the most recent content. PDF versions can be regenerated using RenderCV from the YAML source files.
 
 ### PDF (.pdf)
 - **Purpose**: Primary distribution format
@@ -319,5 +338,5 @@ The RenderCV YAML structure and workflow documentation are shared for educationa
 - [RenderCV](https://github.com/sinaatalay/rendercv) by Sina Atalay — for the amazing CV generation tool
 
 <p align="center">
-  <sub>Last updated: February 2, 2026</sub><br>
+  <sub>Last updated: March 12, 2026</sub><br>
 </p>
