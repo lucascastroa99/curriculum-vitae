@@ -1,0 +1,22 @@
+{
+  "name": "curriculum-vitae",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:all": "pnpm run build:cover-letter:en && pnpm run build:cover-letter:pt && pnpm run build:email:en && pnpm run build:email:pt && pnpm run build:resume:en && pnpm run build:resume:pt",
+    "build:cover-letter:en": "typst compile --root . templates/cover-letter-en.typ output/LucasCastro_FullStackDeveloper_CoverLetter.pdf && node scripts/generate-markdown.js --type=cover --lang=en",
+    "build:cover-letter:pt": "typst compile --root . templates/cover-letter-pt.typ output/LucasCastro_DesenvolvedorFullStack_CartaApresentacao.pdf && node scripts/generate-markdown.js --type=cover --lang=pt",
+    "build:email:en": "node scripts/generate-markdown.js --type=email --lang=en",
+    "build:email:pt": "node scripts/generate-markdown.js --type=email --lang=pt",
+    "build:resume:en": "typst compile --root . templates/resume-en.typ output/LucasCastro_FullStackDeveloper_Resume.pdf && node scripts/generate-markdown.js --type=resume --lang=en",
+    "build:resume:pt": "typst compile --root . templates/resume-pt.typ output/LucasCastro_DesenvolvedorFullStack_Curriculo.pdf && node scripts/generate-markdown.js --type=resume --lang=pt",
+    "watch:cover-letter:en": "typst watch --root . templates/cover-letter-en.typ output/LucasCastro_FullStackDeveloper_CoverLetter.pdf",
+    "watch:cover-letter:pt": "typst watch --root . templates/cover-letter-pt.typ output/LucasCastro_DesenvolvedorFullStack_CartaApresentacao.pdf",
+    "watch:resume:en": "typst watch --root . templates/resume-en.typ output/LucasCastro_FullStackDeveloper_Resume.pdf",
+    "watch:resume:pt": "typst watch --root . templates/resume-pt.typ output/LucasCastro_DesenvolvedorFullStack_Curriculo.pdf"
+  },
+  "dependencies": {
+    "nunjucks": "^3.2.4",
+    "yaml": "^2.9.0"
+  }
+}
