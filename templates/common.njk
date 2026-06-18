@@ -1,0 +1,141 @@
+{% macro header(lang, data) -%}
+# {{ data.personal.firstname }} {{ data.personal.lastname }}
+
+*{{ data.personal.position | field(lang) }}*
+{% if lang == "en" %}
+**Location:** {{ data.personal.location | field(lang) }}
+**Email:** {{ data.personal.email }}
+**Phone:** {{ data.personal.phone | phone(lang) }}
+{%- else %}
+**Localização:** {{ data.personal.location | field(lang) }}
+**E-mail:** {{ data.personal.email }}
+**Telefone:** {{ data.personal.phone | phone(lang) }}
+{%- endif %}
+**Website:** {{ data.personal.website | replace("https://", "") }}
+**LinkedIn:** linkedin.com/in/{{ data.personal.linkedin }}
+**GitHub:** github.com/{{ data.personal.github }}
+{%- endmacro %}
+
+{%- macro resumeBody(lang, data) %}
+
+{%- if lang == "en" %}
+
+## Summary
+{%- else %}
+
+## Resumo
+{%- endif %}
+
+{{ data.summary | field(lang) }}
+
+---
+
+{%- if lang == "en" %}
+
+## Experience
+{%- else %}
+
+## Experiência
+{%- endif %}
+{%- for exp in data.experience %}
+
+### {{ exp.position | field(lang) }}
+
+**{{ exp.company }}** | {{ exp.location | field(lang) }}
+*{{ exp.date.start | formatDate(lang) }} – {{ exp.date.end | formatDate(lang) }}*
+{%- for h in exp.highlights | field(lang) %}
+- {{ h }}
+{%- endfor %}
+{%- endfor %}
+
+---
+
+{%- if lang == "en" %}
+
+## Projects
+{%- else %}
+
+## Projetos
+{%- endif %}
+{%- for proj in data.projects %}
+
+### {{ proj.name }}
+
+*{{ proj.date.start | formatDate(lang) }} – {{ proj.date.end | formatDate(lang) }}*
+
+{%- for h in proj.highlights | field(lang) %}
+- {{ h }}
+{%- endfor %}
+{%- endfor %}
+
+---
+
+{%- if lang == "en" %}
+
+## Education
+{%- else %}
+
+## Educação
+{%- endif %}
+{%- for edu in data.education %}
+
+### {{ edu.area | field(lang) }}
+
+**{{ edu.institution | field(lang) }}** | {{ edu.location | field(lang) }}
+*{{ edu.date.start | formatDate(lang) }} – {{ edu.date.end | formatDate(lang) }}*
+{%- endfor %}
+
+---
+
+{%- if lang == "en" %}
+
+## Certifications
+{%- else %}
+
+## Certificações
+{%- endif %}
+{%- for cert in data.certifications %}
+
+### {{ cert.area }}
+
+**{{ cert.institution }}** | {{ cert.date.start | formatDate(lang) }}
+{%- if lang == "en" %} Score:{% else %} Pontuação:{% endif %} {{ cert.score | field(lang) }}
+[View Certificate]({{ cert.url }})
+{%- endfor %}
+
+---
+
+{%- if lang == "en" %}
+
+## Skills
+{%- else %}
+
+## Habilidades
+{%- endif %}
+
+{%- if lang == "en" %}
+
+| Category | Technologies |
+|----------|--------------|
+{%- else %}
+
+| Categoria | Tecnologias |
+|-----------|-------------|
+{%- endif %}
+{%- for skill in data.skills %}
+| **{{ skill.label | field(lang) }}** | {{ skill.details | skillDetails(lang) }} |
+{%- endfor %}
+
+---
+
+{%- if lang == "en" %}
+
+## Languages
+{%- else %}
+
+## Idiomas
+{%- endif %}
+{%- for lang_entry in data.languages %}
+- **{{ lang_entry.label | field(lang) }}** — {{ lang_entry.level | field(lang) }}
+{%- endfor %}
+{%- endmacro %}

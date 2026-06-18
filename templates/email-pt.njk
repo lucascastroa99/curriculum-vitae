@@ -1,0 +1,8 @@
+**Assunto:** {{ data.email.subject[lang] }}
+
+---
+
+{%- for paragraph in data.email.body[lang] %}
+
+{{ paragraph }}
+{%- endfor %}

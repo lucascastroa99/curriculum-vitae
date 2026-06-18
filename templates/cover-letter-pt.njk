@@ -1,0 +1,16 @@
+{%- from "common.njk" import header %}
+{{- header(lang, data) }}
+
+---
+
+*{{ date }}*
+
+Prezados(as),
+
+{% for paragraph in data.coverLetter[lang].paragraphs %}
+{{ paragraph }}
+{% endfor %}
+
+Atenciosamente,
+
+**{{ data.personal.firstname }} {{ data.personal.lastname }}**
