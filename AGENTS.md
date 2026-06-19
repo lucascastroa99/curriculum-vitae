@@ -13,10 +13,10 @@ data/*.yaml  →  templates/*.njk  →  output/*.md   (Node.js + Nunjucks)
 data/*.yaml  →  templates/*.typ  →  output/*.pdf   (Typst CLI)
 ```
 
-- **Data layer**: YAML files define all personal info, experience, education, skills, cover letter paragraphs, and email templates
-- **Template layer**: Nunjucks (`.njk`) for Markdown, Typst (`.typ`) for PDF
-- **Build layer**: `scripts/generate-markdown.js` handles Markdown generation; Typst CLI handles PDF compilation
-- **Output layer**: All generated files (`.md` and `.pdf`) live in `output/`
+- **Data layer**: YAML files define personal info, experience, education, skills, cover letter paragraphs, email templates
+- **Template layer**: Nunjucks (`.njk`) for Markdown; Typst (`.typ`) for PDF
+- **Build layer**: `scripts/generate-markdown.js` (Markdown); Typst CLI (PDF)
+- **Output layer**: Generated `.md` and `.pdf` files in `output/` (never edit directly)
 
 ## Directory Structure
 
@@ -31,42 +31,41 @@ data/*.yaml  →  templates/*.typ  →  output/*.pdf   (Typst CLI)
 ## Development Workflow
 
 ### Prerequisites
-- Node.js (for Markdown generation)
+
+- Node.js (v18+)
 - pnpm (package manager)
 - Typst CLI (for PDF compilation)
+
+### Setup Commands
+
+```bash
+pnpm install
+```
 
 ### Build Commands
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Build all outputs (PDFs + Markdown, both languages)
-pnpm run build:all
-
-# Build specific document type in both languages
-pnpm run build:resume:en    # English resume (PDF + MD)
-pnpm run build:resume:pt    # Portuguese resume (PDF + MD)
-pnpm run build:cover-letter:en
-pnpm run build:cover-letter:pt
-pnpm run build:email:en
-pnpm run build:email:pt
+pnpm run build:all                    # Build all outputs (PDF + Markdown, both languages)
+pnpm run build:resume:en              # English resume (PDF + MD)
+pnpm run build:resume:pt              # Portuguese resume (PDF + MD)
+pnpm run build:cover-letter:en        # English cover letter (PDF + MD)
+pnpm run build:cover-letter:pt        # Portuguese cover letter (PDF + MD)
+pnpm run build:email:en               # English email template (MD only)
+pnpm run build:email:pt               # Portuguese email template (MD only)
 ```
 
-### Watch Mode
+### Watch Mode (PDF only)
 
 ```bash
-# Watch and auto-rebuild PDFs on file changes
 pnpm run watch:resume:en
 pnpm run watch:resume:pt
 pnpm run watch:cover-letter:en
 pnpm run watch:cover-letter:pt
 ```
 
-### Markdown Generation (standalone)
+### Standalone Markdown Generation
 
 ```bash
-# Generate Markdown only (no PDF)
 node scripts/generate-markdown.js --type=<cover|resume|email> [--lang=<en|pt>]
 ```
 
@@ -94,22 +93,43 @@ Simple string fields are language-agnostic. Use the `field(lang)` Nunjucks filte
 ## Template Conventions
 
 ### Nunjucks Templates (`.njk`)
+
 - Located in `templates/`
 - Shared macros live in `common.njk`
 - Custom filters: `field`, `phone`, `formatDate`, `skillDetails`
 - Language selection via `lang` variable passed at render time
 
 ### Typst Templates (`.typ`)
+
 - Located in `templates/`
-- PDF-only output (no Markdown counterpart for Typst)
+- PDF-only output (no Markdown counterpart)
 - Compiled with `typst compile --root .`
+- Shared styles in `common.typ`
 
-## Code Style
+## Testing Instructions
 
-- JavaScript (CommonJS): `scripts/generate-markdown.js`
-- No linting or formatting tools configured
-- YAML: standard 2-space indentation
-- Nunjucks: follow existing macro patterns in `common.njk`
+No automated test suite exists. Verify builds manually after changes:
+
+```bash
+pnpm run build:all
+```
+
+Check output files in `output/` for correct rendering. Verify both languages render correctly.
+
+## Code Style and Conventions
+
+- **JavaScript**: CommonJS (`scripts/generate-markdown.js`)
+- **YAML**: 2-space indentation
+- **Nunjucks**: Follow existing macro patterns in `common.njk`
+- **Typst**: Follow existing patterns in `common.typ`
+- **No linting or formatting tools configured**
+
+## Build and Deployment
+
+- All outputs generated to `output/` directory
+- PDF outputs include both standard and LinkedIn-optimized variants (separate filenames)
+- No CI/CD pipeline configured
+- No environment-specific configuration
 
 ## Agent Rules
 
@@ -120,12 +140,19 @@ Simple string fields are language-agnostic. Use the `field(lang)` Nunjucks filte
 - **YAML data integrity** — validate YAML syntax before committing
 - **Template filters** — use existing filters (`field`, `phone`, `formatDate`, `skillDetails`); add new filters to `generate-markdown.js` if needed
 - **Typst vs Nunjucks** — Typst generates PDFs, Nunjucks generates Markdown; they are independent pipelines
+- **Always use `pnpm install`** — the `pnpm-lock.yaml` is committed
+- **Conventional commits** — follow `feat(cv):`, `docs:`, `fix:` pattern
+
+## Debugging Notes
+
+- **YAML parse errors**: Validate YAML syntax; use 2-space indentation
+- **Missing template filters**: Add new filters in `scripts/generate-markdown.js` via `createEnv()`
+- **PDF not generating**: Ensure Typst CLI is installed (`typst --version`)
+- **Markdown not generating**: Ensure Node.js and pnpm are installed; run `pnpm install`
 
 ## Additional Notes
 
-- No test suite exists — verify builds manually after changes
-- No CI/CD pipeline configured
+- No test suite — verify builds manually after changes
+- No CI/CD pipeline
 - No `.env` or environment-specific configuration
 - Git history shows conventional commits (`feat(cv):`, `docs:`) — follow this pattern
-- PDF outputs include both standard and LinkedIn-optimized variants (separate filenames)
-- The `pnpm-lock.yaml` is committed — always use `pnpm install` (not npm)

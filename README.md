@@ -1,6 +1,17 @@
+<div align="center">
+
 # Curriculum Vitae
 
 Bilingual (PT-BR / EN-US) resume generation system. Edit content in YAML, generate Markdown and PDF outputs from a single source of truth.
+
+![Node.js](https://img.shields.io/badge/Node.js->=20-3c873a?style=flat-square)
+![pnpm](https://img.shields.io/badge/pnpm-8+-f69220?style=flat-square)
+![Typst](https://img.shields.io/badge/Typst-CLI-231f20?style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
+
+[Features](#-features) · [Architecture](#-architecture) · [Getting Started](#-getting-started) · [Development](#-development) · [Data Editing](#-data-editing)
+
+</div>
 
 ## Features
 
@@ -38,8 +49,6 @@ data/*.yaml  ──►  templates/*.typ  ──►  output/*.pdf    (Typst CLI)
 pnpm install
 ```
 
-## Usage
-
 ### Build Everything
 
 ```bash
@@ -73,6 +82,19 @@ pnpm run watch:cover-letter:pt
 ```bash
 node scripts/generate-markdown.js --type=<cover|resume|email> [--lang=<en|pt>]
 ```
+
+## Development
+
+After making changes to templates or data files, rebuild and verify outputs:
+
+```bash
+pnpm run build:all
+```
+
+Check the generated files in `output/` to confirm correct rendering in both languages.
+
+> [!NOTE]
+> No automated test suite exists. Verify builds manually after changes.
 
 ## Project Structure
 
@@ -139,27 +161,22 @@ Custom Nunjucks filters available in templates:
 | `formatDate(lang)` | Format date strings (e.g., "January 2024") |
 | `skillDetails(lang)` | Extract skill details by language |
 
-## Scripts Reference
+## Scripts
 
 | Command | Description |
 |---------|-------------|
-| `pnpm run build:all` | Build all outputs (PDF + MD, both languages) |
-| `pnpm run build:resume:en` | English resume (PDF + MD) |
-| `pnpm run build:resume:pt` | Portuguese resume (PDF + MD) |
-| `pnpm run build:cover-letter:en` | English cover letter (PDF + MD) |
-| `pnpm run build:cover-letter:pt` | Portuguese cover letter (PDF + MD) |
-| `pnpm run build:email:en` | English email (MD only) |
-| `pnpm run build:email:pt` | Portuguese email (MD only) |
-| `pnpm run watch:resume:en` | Watch English resume (PDF) |
-| `pnpm run watch:resume:pt` | Watch Portuguese resume (PDF) |
-| `pnpm run watch:cover-letter:en` | Watch English cover letter (PDF) |
-| `pnpm run watch:cover-letter:pt` | Watch Portuguese cover letter (PDF) |
+| `pnpm run build:all` | Build all outputs (PDF + Markdown, both languages) |
+| `pnpm run build:resume:<lang>` | Build resume for specified language |
+| `pnpm run build:cover-letter:<lang>` | Build cover letter for specified language |
+| `pnpm run build:email:<lang>` | Build email template for specified language |
+| `pnpm run watch:resume:<lang>` | Watch and auto-rebuild resume PDF |
+| `pnpm run watch:cover-letter:<lang>` | Watch and auto-rebuild cover letter PDF |
+| `node scripts/generate-markdown.js` | Standalone Markdown generation |
 
 ## Additional Notes
 
 - **Never edit files in `output/`** — they are generated artifacts
 - Always use `pnpm install` — the `pnpm-lock.yaml` is committed
 - Follow conventional commits: `feat(cv):`, `docs:`, `fix:`
-- No test suite — verify builds manually after changes
 - No CI/CD pipeline configured
 - PDF outputs include both standard and LinkedIn-optimized variants
