@@ -4,6 +4,14 @@
 
 #import "common.typ": *
 
+#set document(
+  title: personal.firstname + " " + personal.lastname + " - Cover Letter",
+  author: personal.firstname + " " + personal.lastname,
+  description: "Cover letter for " + personal.position.en,
+  keywords: ("cover letter", personal.position.en),
+  date: datetime.today(),
+)
+
 // =====================================================
 // PAGE SETUP
 // =====================================================

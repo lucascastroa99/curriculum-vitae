@@ -105,12 +105,9 @@
 // =====================================================
 
 #let section-header(title) = {
-  v(8pt)
-  block(width: 100%)[
-    #set par(spacing: 8pt)
-    #text(size: 14pt, weight: "bold", fill: primary-color)[#title]
-    #line(length: 100%, stroke: 0.5pt + primary-color)
-  ]
+  v(10pt)
+  heading(title, level: 2, outlined: false)
+  pdf.artifact(line(length: 100%, stroke: 0.5pt + primary-color))
 }
 
 #let document-header(lang) = {
@@ -124,142 +121,107 @@
         #personal.position.at(lang)
       ]
     ][
-      #stack(dir: ttb, spacing: 3pt)[
-        #text(size: 10.5pt, fill: muted-color)[
-          #fa(0xf3c5) #h(0.3em) #link(
-            "https://www.google.com/maps/search/" + personal.location.at(lang),
-          )[#personal.location.at(lang)] #h(20pt)
-          #fa(0xf0e0) #h(0.3em) #link("mailto:" + personal.email)[#personal.email] #h(20pt)
-          #fa(0xf095) #h(0.3em) #link("tel:" + personal.phone)[#format-phone(personal.phone, lang)]
-        ]
-      ][
-        #text(size: 10.5pt, fill: muted-color)[
-          #fa(0xf0ac) #h(0.3em) #link(personal.website)[#(
-            personal.website.replace("https://", "").replace("http://", "")
-          )] #h(20pt)
-          #fab(0xf08c) #h(0.3em) #link("https://linkedin.com/in/" + personal.linkedin)[linkedin.com/in/#personal.linkedin] #h(
-            20pt,
-          )
-          #fab(0xf09b) #h(0.3em) #link("https://github.com/" + personal.github)[github.com/#personal.github]
-        ]
+      #text(size: 10.5pt, fill: muted-color)[
+        #link("https://www.google.com/maps/search/" + personal.location.at(lang))[#personal.location.at(lang)] #h(12pt) | #h(12pt)
+        #link("mailto:" + personal.email)[#personal.email] #h(12pt) | #h(12pt)
+        #link("tel:" + personal.phone)[#format-phone(personal.phone, lang)] \
+        #link(personal.website)[#(personal.website.replace("https://", "").replace("http://", ""))] #h(12pt) | #h(12pt)
+        #link("https://linkedin.com/in/" + personal.linkedin)[linkedin.com/in/#personal.linkedin] #h(12pt) | #h(12pt)
+        #link("https://github.com/" + personal.github)[github.com/#personal.github]
       ]
     ]
   ]
 }
 
+#let section-entry(
+  primary,
+  secondary: none,
+  start,
+  end: none,
+  right-line2: none,
+  highlights: (),
+  leading: 0.6em,
+) = {
+  let date-str = if end != none { [#start - #end] } else { start }
+  
+  block(width: 100%)[
+    #grid(
+      columns: (1fr, auto),
+      align: (left, right),
+      [
+        #set par(leading: leading)
+        #text(weight: "bold", size: 12pt)[#primary]
+        #if secondary != none [
+          \ #text(style: "italic", size: 11.5pt, fill: muted-color)[#secondary]
+        ]
+      ],
+      [
+        #set par(leading: leading)
+        #text(size: 12pt, fill: muted-color)[#date-str]
+        #if right-line2 != none [
+          \ #text(size: 11.5pt, fill: muted-color)[#right-line2]
+        ]
+      ],
+    )
+    
+    #if highlights.len() > 0 [
+      #set par(leading: leading)
+      #set list(marker: [•], body-indent: 0.8em, spacing: 0.6em)
+      #for highlight in highlights [
+        - #parse-bold(highlight)
+      ]
+    ]
+  ]
+  v(14pt, weak: true)
+}
+
 #let experience-entry(entry, lang) = {
-  let pos = entry.position.at(lang)
-  let company = entry.company
-  let start = format-date(entry.date.start, lang)
   let end = if entry.date.end == "present" {
     if lang == "pt" { "Presente" } else { "Present" }
   } else {
     format-date(entry.date.end, lang)
   }
-  let loc = entry.location.at(lang)
-
-  block(width: 100%)[
-    #grid(
-      columns: (1fr, auto),
-      align: (left, right),
-      [
-        #set par(leading: 0.6em)
-        #text(weight: "bold", size: 12pt)[#pos] \
-        #text(style: "italic", size: 11.5pt, fill: muted-color)[#company]
-      ],
-      [
-        #set par(leading: 0.6em)
-        #text(size: 12pt, fill: muted-color)[#start – #end] \
-        #text(size: 11.5pt, fill: muted-color)[#loc]
-      ],
-    )
-
-    #set par(leading: 0.6em)
-    #set list(marker: [•], body-indent: 0.8em, spacing: 0.6em)
-    #for highlight in entry.highlights.at(lang) [
-      - #parse-bold(highlight)
-    ]
-  ]
-  v(6pt)
+  
+  section-entry(
+    entry.position.at(lang),
+    format-date(entry.date.start, lang),
+    secondary: entry.company,
+    end: end,
+    right-line2: entry.location.at(lang),
+    highlights: entry.highlights.at(lang),
+    leading: 0.6em,
+  )
 }
 
 #let project-entry(entry, lang) = {
-  let name = entry.name
-  let start = format-date(entry.date.start, lang)
-  let end = format-date(entry.date.end, lang)
-
-  block(width: 100%)[
-    #grid(
-      columns: (1fr, auto),
-      align: (left, right),
-      [
-        #set par(leading: 0.6em)
-        #text(weight: "bold", size: 12pt)[#name]
-      ],
-      [
-        #set par(leading: 0.6em)
-        #text(size: 12pt, fill: muted-color)[#start – #end]
-      ],
-    )
-
-    #set par(leading: 0.6em)
-    #set list(marker: [•], body-indent: 0.8em, spacing: 0.6em)
-    #for highlight in entry.highlights.at(lang) [
-      - #parse-bold(highlight)
-    ]
-  ]
-  v(6pt)
+  section-entry(
+    entry.name,
+    format-date(entry.date.start, lang),
+    end: format-date(entry.date.end, lang),
+    highlights: entry.highlights.at(lang),
+    leading: 0.6em,
+  )
 }
 
 #let education-entry(entry, lang) = {
-  let area = entry.area.at(lang)
-  let institution = entry.institution.at(lang)
-  let start = format-date(entry.date.start, lang)
-  let end = format-date(entry.date.end, lang)
-  let loc = entry.location.at(lang)
-
-  block(width: 100%)[
-    #grid(
-      columns: (1fr, auto),
-      align: (left, right),
-      [
-        #set par(leading: 0.4em)
-        #text(weight: "bold", size: 12pt)[#area] \
-        #text(style: "italic", size: 11.5pt, fill: muted-color)[#institution]
-      ],
-      [
-        #set par(leading: 0.4em)
-        #text(size: 12pt, fill: muted-color)[#start – #end] \
-        #text(size: 11.5pt, fill: muted-color)[#loc]
-      ],
-    )
-  ]
-  v(6pt)
+  section-entry(
+    entry.area.at(lang),
+    format-date(entry.date.start, lang),
+    secondary: entry.institution.at(lang),
+    end: format-date(entry.date.end, lang),
+    right-line2: entry.location.at(lang),
+    leading: 0.4em,
+  )
 }
 
 #let certification-entry(entry, lang) = {
-  let area = entry.area
-  let institution = entry.institution
-  let start = format-date(entry.date.start, lang)
-  let score = entry.score.at(lang)
-
-  block(width: 100%)[
-    #grid(
-      columns: (1fr, auto),
-      align: (left, right),
-      [
-        #set par(leading: 0.4em)
-        #text(weight: "bold", size: 12pt)[#area] \
-        #text(style: "italic", size: 11.5pt, fill: muted-color)[#institution]
-      ],
-      [
-        #set par(leading: 0.4em)
-        #text(size: 12pt, fill: muted-color)[#score] \
-        #text(size: 11.5pt, fill: muted-color)[#start]
-      ],
-    )
-  ]
-  v(6pt)
+  section-entry(
+    entry.area,
+    format-date(entry.date.start, lang),
+    secondary: entry.institution,
+    right-line2: entry.score.at(lang),
+    leading: 0.4em,
+  )
 }
 
 #let skill-category(label, details, lang) = {

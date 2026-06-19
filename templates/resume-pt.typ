@@ -4,6 +4,14 @@
 
 #import "common.typ": *
 
+#set document(
+  title: personal.firstname + " " + personal.lastname + " - Currículo",
+  author: personal.firstname + " " + personal.lastname,
+  keywords: ("currículo", personal.position.pt),
+)
+
+#show heading: set text(primary-color)
+
 // =====================================================
 // PAGE SETUP
 // =====================================================
@@ -14,7 +22,7 @@
 )
 
 #set text(
-  font: "Source Sans 3",
+  font: ("Source Sans 3", "Arial"),
   size: 11pt,
   fill: text-color,
   lang: "pt",
@@ -40,9 +48,9 @@
 ]
 
 // --- 2. Experience ---
-#section-header("EXPERIÊNCIA")
-#for entry in resume-data.experience.slice(0, resume-experience-limit) [
-  #block(breakable: false)[
+#block(breakable: false)[
+  #section-header("EXPERIÊNCIA")
+  #for entry in resume-data.experience.slice(0, resume-experience-limit) [
     #experience-entry(entry, "pt")
   ]
 ]
@@ -72,9 +80,11 @@
 ]
 
 // --- 6. Skills ---
-#section-header("HABILIDADES")
-#for skill in resume-data.skills [
-  #skill-category(skill.label.at("pt"), skill.details, "pt")
+#block(breakable: false)[
+  #section-header("HABILIDADES")
+  #for skill in resume-data.skills [
+    #skill-category(skill.label.at("pt"), skill.details, "pt")
+  ]
 ]
 
 // --- 7. Languages ---

@@ -4,6 +4,14 @@
 
 #import "common.typ": *
 
+#set document(
+  title: personal.firstname + " " + personal.lastname + " - Carta de Apresentação",
+  author: personal.firstname + " " + personal.lastname,
+  description: "Carta de apresentação para " + personal.position.pt,
+  keywords: ("carta de apresentação", personal.position.pt),
+  date: datetime.today(),
+)
+
 // =====================================================
 // PAGE SETUP
 // =====================================================
